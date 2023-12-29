@@ -1,7 +1,20 @@
 import Image from 'next/image'
 
-export default function Home() {
+export async function getServerSideProps() {
+  console.log("from server side props: ", process.env.WILLS_KEY);
+  console.log("from server side props: ", process.env.WILLSKEY_NOQUOTES);
 
+  return {
+    props: {
+      data: "got the data"
+    }
+  }
+}
+
+export default function Home({ data }) {
+
+
+  console.log("from props: ", data);
   console.log("from server: ", process.env.WILLS_KEY);
   console.log("from server: ", process.env.WILLSKEY_NOQUOTES);
 
